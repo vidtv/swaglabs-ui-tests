@@ -1,1 +1,1 @@
-# test_playwright_project
+Test Java + Playwright + Maven project for a hotel booking website.
