@@ -1,1 +1,1 @@
-Test Java + Playwright + Maven project for a hotel booking website.
+Test Java + Playwright + TestNG + Maven project for a hotel booking website.
