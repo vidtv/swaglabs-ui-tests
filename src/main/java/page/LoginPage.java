@@ -13,11 +13,6 @@ import static util.Constants.BASE_URL;
 public class LoginPage {
     private final Page page;
 
-    // Locators
-    private final String usernameInput = "#user-name";
-    private final String passwordInput = "#password";
-    private final String loginButton = "#login-button";
-
     public LoginPage(Page page) {
         this.page = page;
     }
