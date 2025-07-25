@@ -1,5 +1,6 @@
 package page;
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
 import static util.Constants.BASE_URL;
@@ -12,6 +13,9 @@ import static util.Constants.BASE_URL;
  */
 public class LoginPage {
     private final Page page;
+
+    // Error message texts
+    public static final String INCORRECT_LOGIN_PASSWORD_ERROR = "Epic sadface: Username and password do not match any user in this service";
 
     public LoginPage(Page page) {
         this.page = page;
@@ -34,5 +38,13 @@ public class LoginPage {
         page.fill("#user-name", username);
         page.fill("#password", password);
         page.click("#login-button");
+    }
+
+    /**
+     * Get a locator for the incorrect login/password error message displayed on the login page.
+     * This is used to verify if an error occurs during login.
+     */
+    public Locator getErrorNotification() {
+        return page.getByTestId("error");
     }
 }
