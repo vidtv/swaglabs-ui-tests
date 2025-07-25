@@ -16,6 +16,7 @@ public class LoginPage {
 
     // Error message texts
     public static final String INCORRECT_LOGIN_PASSWORD_ERROR = "Epic sadface: Username and password do not match any user in this service";
+    public static final String USERNAME_IS_REQUIRED_ERROR = "Epic sadface: Username is required";
 
     public LoginPage(Page page) {
         this.page = page;
