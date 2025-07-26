@@ -20,7 +20,7 @@ public class SuccessfulLoginTest extends BaseTest {
         );
 
         step("2. Enter valid credentials and verify that a page with products list is displayed", () -> {
-            loginPage.login(LOGIN, PASSWORD);
+            loginPage.login(LOGIN_STANDARD_USER, PASSWORD);
 
             assertThat(page.locator(productsPage.productsList)).isVisible();
         });

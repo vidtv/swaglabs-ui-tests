@@ -13,10 +13,16 @@ public class Constants {
     public static String BASE_URL = "https://www.saucedemo.com/";
 
     /**
-     * A username for the application.
+     * A username for a standard user.
      * Default value is set to "invalidUsername" if not specified via system property.
      */
-    public static final String LOGIN = System.getProperty("LOGIN", "invalidUsername");
+    public static final String LOGIN_STANDARD_USER = System.getProperty("LOGIN_STANDARD_USER", "invalidUsername");
+
+    /**
+     * A username for a locked-out user.
+     * Default value is set to "invalidUsername" if not specified via system property.
+     */
+    public static final String LOGIN_LOCKED_OUT_USER = System.getProperty("LOGIN_LOCKED_OUT_USER", "invalidUsername");
 
     /**
      * A password for the application.
