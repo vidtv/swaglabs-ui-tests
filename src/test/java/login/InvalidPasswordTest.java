@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static io.qameta.allure.Allure.step;
 import static page.LoginPage.INCORRECT_LOGIN_PASSWORD_ERROR;
-import static util.Constants.LOGIN;
+import static util.Constants.LOGIN_STANDARD_USER;
 
 @Tag("Login")
 public class InvalidPasswordTest extends BaseTest {
@@ -24,7 +24,7 @@ public class InvalidPasswordTest extends BaseTest {
         );
 
         step("2. Enter invalid password and verify that a correct error message is displayed", () -> {
-            loginPage.login(LOGIN, invalidPassword);
+            loginPage.login(LOGIN_STANDARD_USER, invalidPassword);
 
             assertThat(loginPage.getErrorNotification()).isVisible();
             assertThat(loginPage.getErrorNotification()).hasText(INCORRECT_LOGIN_PASSWORD_ERROR);
