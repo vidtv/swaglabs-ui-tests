@@ -1,0 +1,64 @@
+package products;
+
+import base.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.testng.Tag;
+import org.testng.annotations.Test;
+import page.products.ProductItem;
+
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static io.qameta.allure.Allure.step;
+import static java.util.Comparator.reverseOrder;
+import static org.testng.AssertJUnit.assertEquals;
+import static page.products.ProductsPage.SORT_BY_PRICE_ASC;
+import static page.products.ProductsPage.SORT_BY_PRICE_DESC;
+import static util.Constants.LOGIN_STANDARD_USER;
+import static util.Constants.PASSWORD;
+
+@Tag("Products")
+public class ProductSortingByPriceTest extends BaseTest {
+
+    @Test(testName = "Sorting products by price (low to high, high to low)")
+    @Description("Verify that products can be sorted by price in ascending and descending order")
+    public void test() {
+        step("1. Open the login page",
+                loginPage::navigate
+        );
+
+        step("2. Login as a standard user and verify that products page is opened", () -> {
+            loginPage.login(LOGIN_STANDARD_USER, PASSWORD);
+
+            assertThat(productsPage.getProductsListLocator()).isVisible();
+        });
+
+        step("3. Sort products by price in ascending order and verify that products are sorted correctly", () -> {
+            productsPage.selectSortingOption(SORT_BY_PRICE_ASC);
+
+            var expectedProductPrices = productsPage.getAllProductItems().stream()
+                    .map(ProductItem::getProductPrice)
+                    .sorted()
+                    .toList();
+            var actualProductPrices = productsPage.getAllProductItems().stream()
+                            .map(ProductItem::getProductPrice)
+                            .toList();
+
+            assertEquals("Products are sorted by price in ascending order",
+                    expectedProductPrices, actualProductPrices);
+        });
+
+        step("4. Sort products by price in descending order and verify that products are sorted correctly", () -> {
+            productsPage.selectSortingOption(SORT_BY_PRICE_DESC);
+
+            var expectedProductPrices = productsPage.getAllProductItems().stream()
+                    .map(ProductItem::getProductPrice)
+                    .sorted(reverseOrder())
+                    .toList();
+            var actualProductPrices = productsPage.getAllProductItems().stream()
+                    .map(ProductItem::getProductPrice)
+                    .toList();
+
+            assertEquals("Products are sorted by price in descending order",
+                    expectedProductPrices, actualProductPrices);
+        });
+    }
+}

@@ -14,6 +14,12 @@ import java.util.List;
 public class ProductsPage {
     private final Page page;
 
+    // Sorting options
+    public static final String SORT_BY_NAME = "Name (A to Z)";
+    public static final String SORT_BY_NAME_DESC = "Name (Z to A)";
+    public static final String SORT_BY_PRICE_ASC = "Price (low to high)";
+    public static final String SORT_BY_PRICE_DESC = "Price (high to low)";
+
     public ProductsPage(Page page) {
         this.page = page;
     }
@@ -25,6 +31,15 @@ public class ProductsPage {
      */
     public Locator getProductsListLocator() {
         return page.getByTestId("inventory-list");
+    }
+
+    /**
+     * Select a sorting option from the dropdown on the products page.
+     *
+     * @param optionName the name of the sorting option to select
+     */
+    public void selectSortingOption(String optionName) {
+        page.getByTestId("product-sort-container").selectOption(optionName);
     }
 
     /**

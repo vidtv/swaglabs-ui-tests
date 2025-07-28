@@ -31,4 +31,14 @@ public class ProductItem {
     public String getProductName() {
         return locator.getByTestId("inventory-item-name").textContent();
     }
+
+    /**
+     * Returns the price of the product item.
+     *
+     * @return price of the product item
+     */
+    public Double getProductPrice() {
+        var priceText = locator.getByTestId("inventory-item-price").textContent();
+        return Double.parseDouble(priceText.replace("$", "").trim());
+    }
 }
