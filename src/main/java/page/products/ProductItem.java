@@ -41,4 +41,13 @@ public class ProductItem {
         var priceText = locator.getByTestId("inventory-item-price").textContent();
         return Double.parseDouble(priceText.replace("$", "").trim());
     }
+
+    /**
+     * Returns the locator for the "Add to cart" button of the product item.
+     *
+     * @return locator for the "Add to cart" button
+     */
+    public Locator getAddToCartButton() {
+        return locator.getByText("Add to cart");
+    }
 }

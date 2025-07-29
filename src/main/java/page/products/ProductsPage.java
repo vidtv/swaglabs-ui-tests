@@ -1,7 +1,6 @@
 package page.products;
 
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
+import com.microsoft.playwright.*;
 
 import java.util.List;
 
@@ -63,5 +62,16 @@ public class ProductsPage {
         return getAllProductItems().stream()
                 .map(ProductItem::getProductName)
                 .toList();
+    }
+
+    /**
+     * Return a locator of a cart badge displayed on the products page.
+     * <br>
+     * The locator is used to identify the badge that shows the number of items in the cart.
+     *
+     * @return locator of a cart badge
+     */
+    public Locator getCartBadgeLocator() {
+        return page.getByTestId("shopping-cart-badge");
     }
 }
