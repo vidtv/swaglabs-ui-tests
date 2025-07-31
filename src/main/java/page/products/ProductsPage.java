@@ -1,7 +1,6 @@
 package page.products;
 
-import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
+import com.microsoft.playwright.*;
 
 import java.util.List;
 
@@ -63,5 +62,34 @@ public class ProductsPage {
         return getAllProductItems().stream()
                 .map(ProductItem::getProductName)
                 .toList();
+    }
+
+    /**
+     * Return a locator of a cart badge displayed on the products page.
+     * <br>
+     * The locator is used to identify the badge that shows the number of items in the cart.
+     *
+     * @return locator of a cart badge
+     */
+    public Locator getCartBadgeLocator() {
+        return page.getByTestId("shopping-cart-badge");
+    }
+
+    public Locator getCartButtonLocator() {
+        return page.locator("#shopping_cart_container");
+    }
+
+    /**
+     * Get a product item by its name.
+     *
+     * @param productName the name of the product to find
+     * @return the {@link ProductItem} object representing the product
+     * @throws RuntimeException if the product with the specified name is not found
+     */
+    public ProductItem getProductItemByName(String productName) {
+        return getAllProductItems().stream()
+                .filter(item -> item.getProductName().equals(productName))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Product with name '" + productName + "' not found"));
     }
 }
