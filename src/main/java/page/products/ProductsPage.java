@@ -74,4 +74,22 @@ public class ProductsPage {
     public Locator getCartBadgeLocator() {
         return page.getByTestId("shopping-cart-badge");
     }
+
+    public Locator getCartButtonLocator() {
+        return page.locator("#shopping_cart_container");
+    }
+
+    /**
+     * Get a product item by its name.
+     *
+     * @param productName the name of the product to find
+     * @return the {@link ProductItem} object representing the product
+     * @throws RuntimeException if the product with the specified name is not found
+     */
+    public ProductItem getProductItemByName(String productName) {
+        return getAllProductItems().stream()
+                .filter(item -> item.getProductName().equals(productName))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Product with name '" + productName + "' not found"));
+    }
 }
