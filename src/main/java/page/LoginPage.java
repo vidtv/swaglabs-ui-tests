@@ -49,4 +49,14 @@ public class LoginPage {
     public Locator getErrorNotification() {
         return page.getByTestId("error");
     }
+
+    /**
+     * Get a locator for the login form on the login page.
+     * This is used to verify if the login form is visible after logging out.
+     *
+     * @return Locator for the login form.
+     */
+    public Locator getLoginFormLocator() {
+        return page.locator(".login-box");
+    }
 }
