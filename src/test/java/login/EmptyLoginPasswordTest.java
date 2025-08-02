@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static io.qameta.allure.Allure.step;
-import static page.LoginPage.USERNAME_IS_REQUIRED_ERROR;
+import static page.login.LoginPage.USERNAME_IS_REQUIRED_ERROR;
 
 @Tag("Login")
 public class EmptyLoginPasswordTest extends BaseTest {

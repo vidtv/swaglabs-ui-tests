@@ -2,7 +2,7 @@ package base;
 
 import com.microsoft.playwright.*;
 import org.testng.annotations.*;
-import page.LoginPage;
+import page.login.LoginPage;
 
 /**
  * BaseTest class provides a setup for Playwright tests.

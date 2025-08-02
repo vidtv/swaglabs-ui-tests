@@ -13,6 +13,12 @@ public class Constants {
     public static String BASE_URL = "https://www.saucedemo.com/";
 
     /**
+     * URL for the products page.
+     * This is constructed using the base URL and the specific path for the products page.
+     */
+    public static String PRODUCTS_PAGE_URL = BASE_URL + "inventory.html";
+
+    /**
      * A username for a standard user.
      * Default value is set to "invalidUsername" if not specified via system property.
      */

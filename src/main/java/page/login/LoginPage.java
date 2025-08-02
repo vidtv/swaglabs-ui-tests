@@ -1,4 +1,4 @@
-package page;
+package page.login;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -18,6 +18,8 @@ public class LoginPage {
     public static final String INCORRECT_LOGIN_PASSWORD_ERROR = "Epic sadface: Username and password do not match any user in this service";
     public static final String USERNAME_IS_REQUIRED_ERROR = "Epic sadface: Username is required";
     public static final String USER_LOCKED_OUT_ERROR = "Epic sadface: Sorry, this user has been locked out.";
+    public static final String YOU_CAN_ONLY_ACCESS_PRODUCTS_PAGE_AFTER_LOGGING_IN_ERROR =
+            "Epic sadface: You can only access '/inventory.html' when you are logged in.";
 
     public LoginPage(Page page) {
         this.page = page;
@@ -48,5 +50,15 @@ public class LoginPage {
      */
     public Locator getErrorNotification() {
         return page.getByTestId("error");
+    }
+
+    /**
+     * Get a locator for the login form on the login page.
+     * This is used to verify if the login form is visible after logging out.
+     *
+     * @return Locator for the login form.
+     */
+    public Locator getLoginFormLocator() {
+        return page.locator(".login-box");
     }
 }

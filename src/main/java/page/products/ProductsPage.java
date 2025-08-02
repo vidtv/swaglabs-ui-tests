@@ -1,6 +1,7 @@
 package page.products;
 
-import com.microsoft.playwright.*;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
 
 import java.util.List;
 
@@ -75,8 +76,25 @@ public class ProductsPage {
         return page.getByTestId("shopping-cart-badge");
     }
 
+    /**
+     * Return a locator for the cart button on the products page.
+     * <br>
+     * The locator is used to identify the button that opens the shopping cart.
+     *
+     * @return locator for the cart button
+     */
     public Locator getCartButtonLocator() {
         return page.locator("#shopping_cart_container");
+    }
+
+    /**
+     * Logout from the application.
+     * <p>
+     * This method clicks on the burger menu button and selects the logout option.
+     */
+    public void logout() {
+        page.locator("#react-burger-menu-btn").click();
+        page.getByTestId("logout-sidebar-link").click();
     }
 
     /**

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static io.qameta.allure.Allure.step;
-import static page.LoginPage.INCORRECT_LOGIN_PASSWORD_ERROR;
+import static page.login.LoginPage.INCORRECT_LOGIN_PASSWORD_ERROR;
 import static util.Constants.LOGIN_STANDARD_USER;
 
 @Tag("Login")
