@@ -19,6 +19,11 @@ public class CartItem {
         this.item = item;
     }
 
+    /**
+     * Return the locator for the name of the cart item.
+     *
+     * @return locator for the cart item's name
+     */
     public Locator getProductName() {
         return item.getByTestId("inventory-item-name");
     }

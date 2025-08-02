@@ -3,8 +3,10 @@ package products;
 import base.BaseTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.testng.Tag;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import page.products.ProductItem;
+import page.products.ProductsPage;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static io.qameta.allure.Allure.step;
@@ -16,6 +18,15 @@ import static util.Constants.PASSWORD;
 
 @Tag("Products")
 public class ProductSortingTest extends BaseTest {
+
+    // Pages
+    private ProductsPage productsPage;
+
+    @BeforeMethod
+    public void setUpTest() {
+        // Initialize products page
+        productsPage = new ProductsPage(page);
+    }
 
     @Test(testName = "Sorting products by price (low to high, high to low) and name (A-Z, Z-A)")
     @Description("Verify that products can be sorted by price in ascending and descending order. " +
