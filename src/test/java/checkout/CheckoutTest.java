@@ -1,6 +1,8 @@
 package checkout;
 
 import base.BaseTest;
+import io.qameta.allure.Description;
+import io.qameta.allure.testng.Tag;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import page.cart.CartPage;
@@ -16,6 +18,7 @@ import static page.checkout.CheckoutPage.FIRST_NAME_IS_REQUIRED_ERROR;
 import static util.Constants.LOGIN_STANDARD_USER;
 import static util.Constants.PASSWORD;
 
+@Tag("Checkout")
 public class CheckoutTest extends BaseTest {
 
     // Pages
@@ -44,7 +47,12 @@ public class CheckoutTest extends BaseTest {
         checkoutCompletePage = new CheckoutCompletePage(page);
     }
 
-    @Test
+    @Test(testName = "Checkout - Fill in user information with valid data. \n" +
+            "Checkout - Error message with missing mandatory fields. \n" +
+            "Checkout - Complete purchase successfully")
+    @Description("Verify that user can enter valid first name, last name, and postal code on checkout info page. \n" +
+            "Verify that error appears if any of the required checkout fields (first name, last name, postal code) are empty. \n" +
+            "Verify that user can complete checkout and see the order confirmation")
     public void test() {
         step("1. Open the login page",
                 loginPage::navigate
