@@ -3,7 +3,9 @@ package products;
 import base.BaseTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.testng.Tag;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import page.products.ProductsPage;
 
 import java.util.List;
 
@@ -17,6 +19,9 @@ import static util.Constants.PASSWORD;
 @Tag("Products")
 public class AllProductsAreDisplayedTest extends BaseTest {
 
+    // Pages
+    private ProductsPage productsPage;
+
     // Test data
     private final int expectedProductQuantity = 6;
     private final List<String> expectedProductNames = List.of(
@@ -27,6 +32,12 @@ public class AllProductsAreDisplayedTest extends BaseTest {
         "Sauce Labs Onesie",
         "Test.allTheThings() T-Shirt (Red)"
     );
+
+    @BeforeMethod
+    public void setUpTest() {
+        // Initialize products page
+        productsPage = new ProductsPage(page);
+    }
 
     @Test(testName = "Display all products after login")
     @Description("Verify that all products are displayed on the products page after logging in as a standard user")

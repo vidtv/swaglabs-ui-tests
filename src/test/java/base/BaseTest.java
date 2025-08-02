@@ -3,8 +3,6 @@ package base;
 import com.microsoft.playwright.*;
 import org.testng.annotations.*;
 import page.LoginPage;
-import page.cart.CartPage;
-import page.products.ProductsPage;
 
 /**
  * BaseTest class provides a setup for Playwright tests.
@@ -22,8 +20,6 @@ public class BaseTest {
 
     // Pages
     protected LoginPage loginPage;
-    protected ProductsPage productsPage;
-    protected CartPage cartPage;
 
     @BeforeClass
     protected void setUpClass() {
@@ -38,13 +34,11 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    protected void setUpTest() {
+    protected void setUpBaseTest() {
         context = browser.newContext();
         page = context.newPage();
 
         loginPage = new LoginPage(page);
-        productsPage = new ProductsPage(page);
-        cartPage = new CartPage(page);
     }
 
     @AfterMethod

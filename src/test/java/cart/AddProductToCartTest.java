@@ -3,7 +3,10 @@ package cart;
 import base.BaseTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.testng.Tag;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import page.cart.CartPage;
+import page.products.ProductsPage;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static io.qameta.allure.Allure.step;
@@ -15,11 +18,21 @@ import static util.Constants.PASSWORD;
 @Tag("Cart")
 public class AddProductToCartTest extends BaseTest {
 
+    // Pages
+    private ProductsPage productsPage;
+    private CartPage cartPage;
+
     // Test data
     private final String firstProductName = "Sauce Labs Backpack";
     private final String secondProductName = "Sauce Labs Bike Light";
 
     private final int expectedCartItemsCount = 2;
+
+    @BeforeMethod
+    public void setUpTest() {
+        productsPage = new ProductsPage(page);
+        cartPage = new CartPage(page);
+    }
 
     @Test(testName = "Add a product to the shopping cart. \n" +
             "Remove a product from the shopping cart. \n" +
