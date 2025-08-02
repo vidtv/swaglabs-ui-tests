@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static io.qameta.allure.Allure.step;
-import static page.LoginPage.USER_LOCKED_OUT_ERROR;
+import static page.login.LoginPage.USER_LOCKED_OUT_ERROR;
 import static util.Constants.LOGIN_LOCKED_OUT_USER;
 import static util.Constants.PASSWORD;
 

@@ -25,8 +25,10 @@ public class SuccessfulLoginAndLogoutTest extends BaseTest {
     }
 
     @Test(testName = "Successful login with valid credentials. \n" +
+            "Session persistence - remain logged in after page refresh. \n" +
             "Logout from the application")
     @Description("Verify successful login with valid credentials. \n" +
+            "Verify user remains logged in after refreshing the products page. \n" +
             "Verify user can log out successfully and it's redirected to the login page")
     public void test() {
         step("1. Open the login page",
@@ -39,7 +41,13 @@ public class SuccessfulLoginAndLogoutTest extends BaseTest {
             assertThat(productsPage.getProductsListLocator()).isVisible();
         });
 
-        step("3. Logout from the application and check that login from is displayed", () -> {
+        step("3. Refresh the page and check that products list is still displayed", () -> {
+            page.reload();
+
+            assertThat(productsPage.getProductsListLocator()).isVisible();
+        });
+
+        step("4. Logout from the application and check that login from is displayed", () -> {
             productsPage.logout();
 
             assertThat(loginPage.getLoginFormLocator()).isVisible();
