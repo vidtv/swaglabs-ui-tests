@@ -50,4 +50,24 @@ public class CheckoutOverviewPage {
                 .map(item -> new CheckoutItem(item))
                 .toList();
     }
+
+    /**
+     * Get the tax amount on the checkout overview page.
+     *
+     * @return tax amount as a Double
+     */
+    public Double getTaxAmount() {
+        var taxText = page.getByTestId("tax-label").textContent();
+        return Double.parseDouble(taxText.replace("Tax: $", "").trim());
+    }
+
+    /**
+     * Get the total price on the checkout overview page.
+     *
+     * @return total price as a Double
+     */
+    public Double getTotalPrice() {
+        var totalText = page.getByTestId("total-label").textContent();
+        return Double.parseDouble(totalText.replace("Total: $", "").trim());
+    }
 }
