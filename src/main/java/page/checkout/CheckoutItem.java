@@ -27,4 +27,14 @@ public class CheckoutItem {
     public Locator getProductName() {
         return item.getByTestId("inventory-item-name");
     }
+
+    /**
+     * Get the price of the checkout item.
+     *
+     * @return price of the checkout item
+     */
+    public Double getProductPrice() {
+        var priceText = item.getByTestId("inventory-item-price").textContent();
+        return Double.parseDouble(priceText.replace("$", "").trim());
+    }
 }

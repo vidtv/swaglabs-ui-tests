@@ -20,6 +20,8 @@ import static util.Constants.PASSWORD;
 
 @Tag("Checkout")
 public class CheckoutTest extends BaseTest {
+    private Double firstProductPrice;
+    private Double secondProductPrice;
 
     // Pages
     private ProductsPage productsPage;
@@ -69,6 +71,9 @@ public class CheckoutTest extends BaseTest {
             productsPage.getProductItemByName(firstProductName).getAddToCartButton().click();
             productsPage.getProductItemByName(secondProductName).getAddToCartButton().click();
 
+            firstProductPrice = productsPage.getProductItemByName(firstProductName).getProductPrice();
+            secondProductPrice = productsPage.getProductItemByName(secondProductName).getProductPrice();
+
             productsPage.getCartButtonLocator().click();
             cartPage.getCheckoutButton().click();
             checkoutPage.getContinueButton().click();
@@ -86,11 +91,19 @@ public class CheckoutTest extends BaseTest {
             assertThat(checkoutOverviewPage.getPageTitle()).hasText(CHECKOUT_OVERVIEW_PAGE_TITLE);
         });
 
-        step("5. Verify that there are the same items displayed on the checkout overview page as on the cart page", () -> {
+        step("5. Verify that there are the same items with correct prices displayed on the checkout overview page as on the cart page " +
+                "and total price is calculated correctly", () -> {
             assertEquals(checkoutOverviewPage.getCheckoutItems().size(), expectedCheckoutItemsCount);
 
             assertThat(checkoutOverviewPage.getCheckoutItems().get(0).getProductName()).hasText(firstProductName);
             assertThat(checkoutOverviewPage.getCheckoutItems().get(1).getProductName()).hasText(secondProductName);
+
+            assertEquals(checkoutOverviewPage.getCheckoutItems().get(0).getProductPrice(), firstProductPrice);
+            assertEquals(checkoutOverviewPage.getCheckoutItems().get(1).getProductPrice(), secondProductPrice);
+
+            // The total price is calculated as the sum of the product prices plus tax
+            var expectedTotalPrice = firstProductPrice + secondProductPrice + checkoutOverviewPage.getTaxAmount();
+            assertEquals(checkoutOverviewPage.getTotalPrice(), expectedTotalPrice);
         });
 
         step("6. Click 'Finish' button and check that the checkout complete page is opened " +
