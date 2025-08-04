@@ -7,7 +7,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import page.cart.CartPage;
 import page.checkout.*;
-import page.products.ProductsPage;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static io.qameta.allure.Allure.step;
@@ -15,8 +14,6 @@ import static org.testng.Assert.assertEquals;
 import static page.checkout.CheckoutCompletePage.*;
 import static page.checkout.CheckoutOverviewPage.CHECKOUT_OVERVIEW_PAGE_TITLE;
 import static page.checkout.CheckoutPage.FIRST_NAME_IS_REQUIRED_ERROR;
-import static util.Constants.LOGIN_STANDARD_USER;
-import static util.Constants.PASSWORD;
 
 @Tag("Checkout")
 public class CheckoutTest extends BaseTest {
@@ -24,7 +21,6 @@ public class CheckoutTest extends BaseTest {
     private Double secondProductPrice;
 
     // Pages
-    private ProductsPage productsPage;
     private CartPage cartPage;
     private CheckoutPage checkoutPage;
     private CheckoutOverviewPage checkoutOverviewPage;
@@ -42,7 +38,6 @@ public class CheckoutTest extends BaseTest {
 
     @BeforeMethod
     public void setUpTest() {
-        productsPage = new ProductsPage(page);
         cartPage = new CartPage(page);
         checkoutPage = new CheckoutPage(page);
         checkoutOverviewPage = new CheckoutOverviewPage(page);
@@ -56,17 +51,11 @@ public class CheckoutTest extends BaseTest {
             "Verify that error appears if any of the required checkout fields (first name, last name, postal code) are empty. \n" +
             "Verify that user can complete checkout and see the order confirmation")
     public void test() {
-        step("1. Open the login page",
-                loginPage::navigate
+        step("1. Open the login page, login as a standard user and verify that products page is opened",
+                this::loginAsStandardUser
         );
 
-        step("2. Login as a standard user and verify that products page is opened", () -> {
-            loginPage.login(LOGIN_STANDARD_USER, PASSWORD);
-
-            assertThat(productsPage.getProductsListLocator()).isVisible();
-        });
-
-        step("3. Add two products to the cart, open the cart, click 'Checkout' button, " +
+        step("2. Add two products to the cart, open the cart, click 'Checkout' button, " +
                 "leave empty fields on the checkout page, click 'Continue' and check that error message is displayed", () -> {
             productsPage.getProductItemByName(firstProductName).getAddToCartButton().click();
             productsPage.getProductItemByName(secondProductName).getAddToCartButton().click();
@@ -81,7 +70,7 @@ public class CheckoutTest extends BaseTest {
             assertThat(checkoutPage.getErrorNotification()).hasText(FIRST_NAME_IS_REQUIRED_ERROR);
         });
 
-        step("4. Populate all the required fields, click 'Continue' button, " +
+        step("3. Populate all the required fields, click 'Continue' button, " +
                 "and check that the checkout overview page is opened", () -> {
             checkoutPage.getFirstNameInput().fill(testFirstName);
             checkoutPage.getLastNameInput().fill(testLastName);
@@ -91,7 +80,7 @@ public class CheckoutTest extends BaseTest {
             assertThat(checkoutOverviewPage.getPageTitle()).hasText(CHECKOUT_OVERVIEW_PAGE_TITLE);
         });
 
-        step("5. Verify that there are the same items with correct prices displayed on the checkout overview page as on the cart page " +
+        step("4. Verify that there are the same items with correct prices displayed on the checkout overview page as on the cart page " +
                 "and total price is calculated correctly", () -> {
             assertEquals(checkoutOverviewPage.getCheckoutItems().size(), expectedCheckoutItemsCount);
 
@@ -106,7 +95,7 @@ public class CheckoutTest extends BaseTest {
             assertEquals(checkoutOverviewPage.getTotalPrice(), expectedTotalPrice);
         });
 
-        step("6. Click 'Finish' button and check that the checkout complete page is opened " +
+        step("5. Click 'Finish' button and check that the checkout complete page is opened " +
                 "with a message about successful checkout completion", () -> {
             checkoutOverviewPage.getFinishButton().click();
 
