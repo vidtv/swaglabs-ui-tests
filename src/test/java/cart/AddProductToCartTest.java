@@ -71,8 +71,8 @@ public class AddProductToCartTest extends BaseTest {
             var cartItems = cartPage.getCartItems();
             assertEquals(cartItems.size(), expectedCartItemsCount, "Cart should contain 2 items");
 
-            assertThat(cartItems.get(0).getProductName()).hasText(firstProductName);
-            assertThat(cartItems.get(1).getProductName()).hasText(secondProductName);
+            assertEquals(cartItems.get(0).getProductName(), firstProductName);
+            assertEquals(cartItems.get(1).getProductName(), secondProductName);
         });
 
         step("6. Return back to the Products page, remove the first product from the cart " +

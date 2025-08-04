@@ -95,8 +95,8 @@ public class CheckoutTest extends BaseTest {
                 "and total price is calculated correctly", () -> {
             assertEquals(checkoutOverviewPage.getCheckoutItems().size(), expectedCheckoutItemsCount);
 
-            assertThat(checkoutOverviewPage.getCheckoutItems().get(0).getProductName()).hasText(firstProductName);
-            assertThat(checkoutOverviewPage.getCheckoutItems().get(1).getProductName()).hasText(secondProductName);
+            assertEquals(checkoutOverviewPage.getCheckoutItems().get(0).getProductName(), firstProductName);
+            assertEquals(checkoutOverviewPage.getCheckoutItems().get(1).getProductName(), secondProductName);
 
             assertEquals(checkoutOverviewPage.getCheckoutItems().get(0).getProductPrice(), firstProductPrice);
             assertEquals(checkoutOverviewPage.getCheckoutItems().get(1).getProductPrice(), secondProductPrice);
