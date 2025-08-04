@@ -2,6 +2,7 @@ package page.cart;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import page.ProductItem;
 
 import java.util.List;
 
@@ -23,10 +24,10 @@ public class CartPage {
      *
      * @return locator for the list of cart items
      */
-    public List<CartItem> getCartItems() {
+    public List<ProductItem> getCartItems() {
         return page.getByTestId("inventory-item").all()
                 .stream()
-                .map(item -> new CartItem(item))
+                .map(item -> new ProductItem(item))
                 .toList();
     }
 

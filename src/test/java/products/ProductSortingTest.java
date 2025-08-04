@@ -5,7 +5,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.testng.Tag;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import page.products.ProductItem;
+import page.products.ProductPageItem;
 import page.products.ProductsPage;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -46,11 +46,11 @@ public class ProductSortingTest extends BaseTest {
             productsPage.selectSortingOption(SORT_BY_PRICE_ASC);
 
             var expectedProductPrices = productsPage.getAllProductItems().stream()
-                    .map(ProductItem::getProductPrice)
+                    .map(ProductPageItem::getProductPrice)
                     .sorted()
                     .toList();
             var actualProductPrices = productsPage.getAllProductItems().stream()
-                            .map(ProductItem::getProductPrice)
+                            .map(ProductPageItem::getProductPrice)
                             .toList();
 
             assertEquals("Products are sorted by price in ascending order",
@@ -61,11 +61,11 @@ public class ProductSortingTest extends BaseTest {
             productsPage.selectSortingOption(SORT_BY_PRICE_DESC);
 
             var expectedProductPrices = productsPage.getAllProductItems().stream()
-                    .map(ProductItem::getProductPrice)
+                    .map(ProductPageItem::getProductPrice)
                     .sorted(reverseOrder())
                     .toList();
             var actualProductPrices = productsPage.getAllProductItems().stream()
-                    .map(ProductItem::getProductPrice)
+                    .map(ProductPageItem::getProductPrice)
                     .toList();
 
             assertEquals("Products are sorted by price in descending order",
@@ -76,11 +76,11 @@ public class ProductSortingTest extends BaseTest {
             productsPage.selectSortingOption(SORT_BY_NAME);
 
             var expectedProductNames = productsPage.getAllProductItems().stream()
-                    .map(ProductItem::getProductName)
+                    .map(ProductPageItem::getProductName)
                     .sorted()
                     .toList();
             var actualProductNames = productsPage.getAllProductItems().stream()
-                    .map(ProductItem::getProductName)
+                    .map(ProductPageItem::getProductName)
                     .toList();
 
             assertEquals("Products are sorted by name in ascending order",
@@ -91,11 +91,11 @@ public class ProductSortingTest extends BaseTest {
             productsPage.selectSortingOption(SORT_BY_NAME_DESC);
 
             var expectedProductNames = productsPage.getAllProductItems().stream()
-                    .map(ProductItem::getProductName)
+                    .map(ProductPageItem::getProductName)
                     .sorted(reverseOrder())
                     .toList();
             var actualProductNames = productsPage.getAllProductItems().stream()
-                    .map(ProductItem::getProductName)
+                    .map(ProductPageItem::getProductName)
                     .toList();
 
             assertEquals("Products are sorted by name in descending order",
