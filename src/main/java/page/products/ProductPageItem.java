@@ -5,13 +5,18 @@ import com.microsoft.playwright.Locator;
 /**
  * A class that represents a single product item on the products page.
  * <p>
- * It contains a locator for the product item, which can be used to interact with it.
+ * It contains a locator for the product item, which can be used to interact with it,
+ * and buttons for adding and removal products.
  */
-public class ProductItem {
-    private final Locator locator;
+public class ProductPageItem extends page.ProductItem {
 
-    public ProductItem(Locator locator) {
-        this.locator = locator;
+    /**
+     * Constructor for ProductPageItem.
+     *
+     * @param locator Locator for the product item
+     */
+    public ProductPageItem(Locator locator) {
+        super(locator);
     }
 
     /**
@@ -21,25 +26,6 @@ public class ProductItem {
      */
     public Locator getSelf() {
         return locator;
-    }
-
-    /**
-     * Returns the name of the product item.
-     *
-     * @return name of the product item as a String
-     */
-    public String getProductName() {
-        return locator.getByTestId("inventory-item-name").textContent();
-    }
-
-    /**
-     * Returns the price of the product item.
-     *
-     * @return price of the product item
-     */
-    public Double getProductPrice() {
-        var priceText = locator.getByTestId("inventory-item-price").textContent();
-        return Double.parseDouble(priceText.replace("$", "").trim());
     }
 
     /**

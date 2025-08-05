@@ -45,12 +45,12 @@ public class ProductsPage {
     /**
      * Return a list of all product items displayed on the products page.
      *
-     * @return list of {@link ProductItem} objects representing each product
+     * @return list of {@link ProductPageItem} objects representing each product
      */
-    public List<ProductItem> getAllProductItems() {
+    public List<ProductPageItem> getAllProductItems() {
         return page.getByTestId("inventory-item").all()
                 .stream()
-                .map(item -> new ProductItem(item))
+                .map(item -> new ProductPageItem(item))
                 .toList();
     }
 
@@ -61,7 +61,7 @@ public class ProductsPage {
      */
     public List<String> getAllProductNames() {
         return getAllProductItems().stream()
-                .map(ProductItem::getProductName)
+                .map(ProductPageItem::getProductName)
                 .toList();
     }
 
@@ -101,10 +101,10 @@ public class ProductsPage {
      * Get a product item by its name.
      *
      * @param productName the name of the product to find
-     * @return the {@link ProductItem} object representing the product
+     * @return the {@link ProductPageItem} object representing the product
      * @throws RuntimeException if the product with the specified name is not found
      */
-    public ProductItem getProductItemByName(String productName) {
+    public ProductPageItem getProductItemByName(String productName) {
         return getAllProductItems().stream()
                 .filter(item -> item.getProductName().equals(productName))
                 .findFirst()

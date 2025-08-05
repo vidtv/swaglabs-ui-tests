@@ -3,6 +3,11 @@ package base;
 import com.microsoft.playwright.*;
 import org.testng.annotations.*;
 import page.login.LoginPage;
+import page.products.ProductsPage;
+
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static util.Constants.LOGIN_STANDARD_USER;
+import static util.Constants.PASSWORD;
 
 /**
  * BaseTest class provides a setup for Playwright tests.
@@ -20,6 +25,7 @@ public class BaseTest {
 
     // Pages
     protected LoginPage loginPage;
+    protected ProductsPage productsPage;
 
     @BeforeClass
     protected void setUpClass() {
@@ -39,6 +45,17 @@ public class BaseTest {
         page = context.newPage();
 
         loginPage = new LoginPage(page);
+        productsPage = new ProductsPage(page);
+    }
+
+    /**
+     * Logs in as a standard user and verifies that the products page is displayed.
+     */
+    protected void loginAsStandardUser() {
+        loginPage.navigate();
+        loginPage.login(LOGIN_STANDARD_USER, PASSWORD);
+
+        assertThat(productsPage.getProductsListLocator()).isVisible();
     }
 
     @AfterMethod

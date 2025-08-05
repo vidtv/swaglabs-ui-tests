@@ -2,6 +2,7 @@ package page.checkout;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import page.ProductItem;
 
 import java.util.List;
 
@@ -44,10 +45,10 @@ public class CheckoutOverviewPage {
      *
      * @return locator for the list of items
      */
-    public List<CheckoutItem> getCheckoutItems() {
+    public List<ProductItem> getCheckoutItems() {
         return page.getByTestId("inventory-item").all()
                 .stream()
-                .map(item -> new CheckoutItem(item))
+                .map(item -> new ProductItem(item))
                 .toList();
     }
 
