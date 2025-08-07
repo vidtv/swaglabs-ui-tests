@@ -1,7 +1,7 @@
 package login;
 
 import base.BaseTest;
-import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.qameta.allure.testng.Tag;
 import org.testng.annotations.Test;
 
@@ -13,8 +13,9 @@ import static util.Constants.PRODUCTS_PAGE_URL;
 @Tag("Login")
 public class ProtectedPageAccessTest extends BaseTest {
 
-    @Test(testName = "Invalid URL access redirects to login")
-    @Description("Verify that navigating directly to a protected page without being logged in redirects user to the login page")
+    @Test(testName = "Invalid URL access redirects to login",
+            description = "Verify that navigating directly to a protected page without being logged in redirects user to the login page")
+    @Feature("Login")
     public void test() {
         step("1. Open the login page",
                 loginPage::navigate

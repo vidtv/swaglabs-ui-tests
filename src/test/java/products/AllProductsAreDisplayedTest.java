@@ -1,7 +1,7 @@
 package products;
 
 import base.BaseTest;
-import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.qameta.allure.testng.Tag;
 import org.testng.annotations.Test;
 
@@ -26,8 +26,9 @@ public class AllProductsAreDisplayedTest extends BaseTest {
         "Test.allTheThings() T-Shirt (Red)"
     );
 
-    @Test(testName = "Display all products after login")
-    @Description("Verify that all products are displayed on the products page after logging in as a standard user")
+    @Test(testName = "Display all products after login",
+            description = "Verify that all products are displayed on the products page after logging in as a standard user")
+    @Feature("Product Catalog")
     public void test() {
         step("1. Open the login page, login as a standard user and verify that products page is opened",
                 this::loginAsStandardUser

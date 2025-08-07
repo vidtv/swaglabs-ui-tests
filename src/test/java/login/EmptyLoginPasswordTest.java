@@ -1,7 +1,7 @@
 package login;
 
 import base.BaseTest;
-import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.qameta.allure.testng.Tag;
 import org.testng.annotations.Test;
 
@@ -15,8 +15,9 @@ public class EmptyLoginPasswordTest extends BaseTest {
     // Test data
     private final String emptyString = "";
 
-    @Test(testName = "Empty login and password fields")
-    @Description("Verify error message when login and password fields are empty")
+    @Test(testName = "Empty login and password fields",
+            description = "Verify error message when login and password fields are empty")
+    @Feature("Login")
     public void test() {
         step("1. Open the login page",
                 loginPage::navigate

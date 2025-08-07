@@ -1,7 +1,7 @@
 package login;
 
 import base.BaseTest;
-import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.qameta.allure.testng.Tag;
 import org.testng.annotations.Test;
 
@@ -13,10 +13,11 @@ public class SuccessfulLoginAndLogoutTest extends BaseTest {
 
     @Test(testName = "Successful login with valid credentials. \n" +
             "Session persistence - remain logged in after page refresh. \n" +
-            "Logout from the application")
-    @Description("Verify successful login with valid credentials. \n" +
+            "Logout from the application",
+            description = "Verify successful login with valid credentials. \n" +
             "Verify user remains logged in after refreshing the products page. \n" +
             "Verify user can log out successfully and it's redirected to the login page")
+    @Feature("Login")
     public void test() {
         step("1. Open the login page, login as a standard user and verify that products page is opened",
                 this::loginAsStandardUser

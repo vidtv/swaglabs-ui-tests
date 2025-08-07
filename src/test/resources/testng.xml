@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="My Playwright Suite">
+    <test name="Swag Labs Tests">
+        <classes>
+            <class name="cart.AddProductToCartTest"></class>
+            <class name="checkout.CheckoutTest"></class>
+            <class name="login.EmptyLoginPasswordTest"></class>
+            <class name="login.InvalidPasswordTest"></class>
+            <class name="login.LockedOutUserTest"></class>
+            <class name="login.ProtectedPageAccessTest"></class>
+            <class name="login.SuccessfulLoginAndLogoutTest"></class>
+            <class name="products.AllProductsAreDisplayedTest"></class>
+            <class name="products.ProductSortingTest"></class>
+        </classes>
+    </test>
+</suite>

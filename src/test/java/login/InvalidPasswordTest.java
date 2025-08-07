@@ -1,7 +1,7 @@
 package login;
 
 import base.BaseTest;
-import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.qameta.allure.testng.Tag;
 import org.testng.annotations.Test;
 
@@ -16,8 +16,8 @@ public class InvalidPasswordTest extends BaseTest {
     // Test data
     private final String invalidPassword = "invalidPassword";
 
-    @Test(testName = "Invalid password login attempt")
-    @Description("Verify error message with an invalid password")
+    @Test(testName = "Invalid password login attempt", description = "Verify error message with an invalid password")
+    @Feature("Login")
     public void test() {
         step("1. Open the login page",
                 loginPage::navigate
