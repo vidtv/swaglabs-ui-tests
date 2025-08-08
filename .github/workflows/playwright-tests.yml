@@ -43,9 +43,9 @@ jobs:
 
       - name: Run tests
         env:
-          LOGIN_STANDARD_USER=${{ secrets.LOGIN_STANDARD_USER }}
-          LOGIN_LOCKED_OUT_USER=${{ secrets.LOGIN_LOCKED_OUT_USER }}
-          PASSWORD=${{ secrets.PASSWORD }}
+          LOGIN_STANDARD_USER: ${{ secrets.LOGIN_STANDARD_USER }}
+          LOGIN_LOCKED_OUT_USER: ${{ secrets.LOGIN_LOCKED_OUT_USER }}
+          PASSWORD: ${{ secrets.PASSWORD }}
         run: mvn test
 
       - name: Generate Allure Report
