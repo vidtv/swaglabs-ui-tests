@@ -1,11 +1,15 @@
 package base;
 
 import com.microsoft.playwright.*;
+import io.qameta.allure.Step;
 import org.testng.annotations.*;
 import page.login.LoginPage;
 import page.products.ProductsPage;
 
+import java.io.ByteArrayInputStream;
+
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static io.qameta.allure.Allure.addAttachment;
 import static util.Constants.LOGIN_STANDARD_USER;
 import static util.Constants.PASSWORD;
 
@@ -51,6 +55,7 @@ public class BaseTest {
     /**
      * Logs in as a standard user and verifies that the products page is displayed.
      */
+    @Step
     protected void loginAsStandardUser() {
         loginPage.navigate();
         loginPage.login(LOGIN_STANDARD_USER, PASSWORD);
@@ -60,8 +65,17 @@ public class BaseTest {
 
     @AfterMethod
     protected void tearDownTest() {
+        takeScreenshot();
+
         if (context != null) {
             context.close();
+        }
+    }
+
+    private void takeScreenshot() {
+        if (page != null) {
+            addAttachment("screenshot.png",
+                    new ByteArrayInputStream(page.screenshot(new Page.ScreenshotOptions().setFullPage(true))));
         }
     }
 

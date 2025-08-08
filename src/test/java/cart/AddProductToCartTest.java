@@ -1,7 +1,7 @@
 package cart;
 
 import base.BaseTest;
-import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.qameta.allure.testng.Tag;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -31,10 +31,11 @@ public class AddProductToCartTest extends BaseTest {
 
     @Test(testName = "Add a product to the shopping cart. \n" +
             "Remove a product from the shopping cart. \n" +
-            "Shopping cart - View added products")
-    @Description("Verify a product can be added to the cart and cart badge updates. \n" +
+            "Shopping cart - View added products",
+    description = "Verify a product can be added to the cart and cart badge updates. \n" +
             "Verify a product can be removed from the cart and cart badge updates accordingly. \n" +
-            "Verify products added to the cart are displayed correctly in the cart page.")
+            "Verify products added to the cart are displayed correctly in the cart page")
+    @Feature("Cart")
     public void test() {
         step("1. Open the login page, login as a standard user and verify that products page is opened",
                 this::loginAsStandardUser

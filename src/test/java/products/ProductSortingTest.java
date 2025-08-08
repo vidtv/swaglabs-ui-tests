@@ -1,7 +1,7 @@
 package products;
 
 import base.BaseTest;
-import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.qameta.allure.testng.Tag;
 import org.testng.annotations.Test;
 import page.products.ProductPageItem;
@@ -14,9 +14,10 @@ import static page.products.ProductsPage.*;
 @Tag("Products")
 public class ProductSortingTest extends BaseTest {
 
-    @Test(testName = "Sorting products by price (low to high, high to low) and name (A-Z, Z-A)")
-    @Description("Verify that products can be sorted by price in ascending and descending order. " +
+    @Test(testName = "Sorting products by price (low to high, high to low) and name (A-Z, Z-A)",
+            description = "Verify that products can be sorted by price in ascending and descending order. \n" +
             "Verify that products can be sorted by name in ascending and descending order")
+    @Feature("Product Catalog")
     public void test() {
         step("1. Open the login page, login as a standard user and verify that products page is opened",
                 this::loginAsStandardUser
