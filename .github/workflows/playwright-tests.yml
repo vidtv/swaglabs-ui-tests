@@ -1,7 +1,6 @@
 name: Java Playwright TestNG CI
 
 on:
-  push:
   pull_request:
   workflow_dispatch:
 
