@@ -1,0 +1,17 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Aug 08 22:06:42 UTC 2025","Fri Aug 08 22:06:43 UTC 2025","277","My Playwright Suite","Swag Labs Tests","login.EmptyLoginPasswordTest","login.EmptyLoginPasswordTest","test","Verify error message when login and password fields are empty",""
+"passed","Fri Aug 08 22:06:48 UTC 2025","Fri Aug 08 22:06:49 UTC 2025","353","My Playwright Suite","Swag Labs Tests","products.AllProductsAreDisplayedTest","products.AllProductsAreDisplayedTest","test","Verify that all products are displayed on the products page after logging in as a standard user",""
+"passed","Fri Aug 08 22:06:40 UTC 2025","Fri Aug 08 22:06:41 UTC 2025","1041","My Playwright Suite","Swag Labs Tests","cart.AddProductToCartTest","cart.AddProductToCartTest","test","Verify a product can be added to the cart and cart badge updates. 
+Verify a product can be removed from the cart and cart badge updates accordingly. 
+Verify products added to the cart are displayed correctly in the cart page",""
+"passed","Fri Aug 08 22:06:49 UTC 2025","Fri Aug 08 22:06:50 UTC 2025","446","My Playwright Suite","Swag Labs Tests","products.ProductSortingTest","products.ProductSortingTest","test","Verify that products can be sorted by price in ascending and descending order. 
+Verify that products can be sorted by name in ascending and descending order",""
+"passed","Fri Aug 08 22:06:45 UTC 2025","Fri Aug 08 22:06:46 UTC 2025","365","My Playwright Suite","Swag Labs Tests","login.ProtectedPageAccessTest","login.ProtectedPageAccessTest","test","Verify that navigating directly to a protected page without being logged in redirects user to the login page",""
+"passed","Fri Aug 08 22:06:41 UTC 2025","Fri Aug 08 22:06:42 UTC 2025","728","My Playwright Suite","Swag Labs Tests","checkout.CheckoutTest","checkout.CheckoutTest","test","Verify that user can enter valid first name, last name, and postal code on checkout info page. 
+Verify that error appears if any of the required checkout fields (first name, last name, postal code) are empty. 
+Verify that user can complete checkout and see the order confirmation",""
+"passed","Fri Aug 08 22:06:45 UTC 2025","Fri Aug 08 22:06:45 UTC 2025","321","My Playwright Suite","Swag Labs Tests","login.LockedOutUserTest","login.LockedOutUserTest","test","Verify error message when trying to log in with a locked out user",""
+"passed","Fri Aug 08 22:06:46 UTC 2025","Fri Aug 08 22:06:48 UTC 2025","1347","My Playwright Suite","Swag Labs Tests","login.SuccessfulLoginAndLogoutTest","login.SuccessfulLoginAndLogoutTest","test","Verify successful login with valid credentials. 
+Verify user remains logged in after refreshing the products page. 
+Verify user can log out successfully and it's redirected to the login page",""
+"passed","Fri Aug 08 22:06:43 UTC 2025","Fri Aug 08 22:06:44 UTC 2025","589","My Playwright Suite","Swag Labs Tests","login.InvalidPasswordTest","login.InvalidPasswordTest","test","Verify error message with an invalid password",""
