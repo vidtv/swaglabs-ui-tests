@@ -1,11 +1,16 @@
 name: Java Playwright TestNG CI
 
-# Trigger the workflow on every push to any branch
+# Trigger the workflow on every push and pull request to main branch
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to run tests on'
+        required: false
 
 jobs:
   test:
