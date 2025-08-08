@@ -1,6 +1,5 @@
 name: Java Playwright TestNG CI
 
-# Trigger the workflow on every push and pull request to main branch
 on:
   push:
   pull_request:
@@ -48,19 +47,25 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
         run: mvn test
 
-      - name: Generate Allure Report
-        run: mvn allure:report
+      - name: Generate Allure report
+        run: mvn -q allure:report
 
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v4
+      # OPTIONAL: sanity check the folder exists
+      - name: Verify Allure output
+        run: |
+          ls -la target/site/allure-maven-plugin || (echo "Allure output missing" && exit 1)
+
+      # THIS is the required uploader for GitHub Pages
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: allure-report
+          # Do not change artifact name unless you also change it in deploy step
           path: target/site/allure-maven-plugin
+          # artifact_name: github-pages   # default; you can omit
 
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    # This environment drives the Pages URL; allow all branches in repo settings
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -68,8 +73,11 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        # If you changed artifact_name above, pass it here:
+        # with:
+        #   artifact_name: my-pages-artifact
 
       - name: Add Pages URL to summary
         run: |
-            echo "### ✅ Allure report is live" >> $GITHUB_STEP_SUMMARY
-            echo "${{ steps.deployment.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ Allure report is live" >> $GITHUB_STEP_SUMMARY
+          echo "${{ steps.deployment.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
