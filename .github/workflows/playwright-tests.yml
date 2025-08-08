@@ -78,11 +78,8 @@ jobs:
           path: allure-report
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-report
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       - name: Add Pages URL to summary
         run: |
