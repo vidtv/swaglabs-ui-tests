@@ -20,19 +20,16 @@ public class Constants {
 
     /**
      * A username for a standard user.
-     * Default value is set to "invalidUsername" if not specified via system property.
      */
-    public static final String LOGIN_STANDARD_USER = System.getProperty("LOGIN_STANDARD_USER", "invalidUsername");
+    public static final String LOGIN_STANDARD_USER = System.getenv("LOGIN_STANDARD_USER");
 
     /**
      * A username for a locked-out user.
-     * Default value is set to "invalidUsername" if not specified via system property.
      */
-    public static final String LOGIN_LOCKED_OUT_USER = System.getProperty("LOGIN_LOCKED_OUT_USER", "invalidUsername");
+    public static final String LOGIN_LOCKED_OUT_USER = System.getenv("LOGIN_LOCKED_OUT_USER");
 
     /**
      * A password for the application.
-     * Default value is set to "invalidPassword" if not specified via system property.
      */
-    public static String PASSWORD = System.getProperty("PASSWORD", "invalidPassword");
+    public static String PASSWORD = System.getenv("PASSWORD");
 }
