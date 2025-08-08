@@ -3,14 +3,8 @@ name: Java Playwright TestNG CI
 # Trigger the workflow on every push and pull request to main branch
 on:
   push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
   workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to run tests on'
-        required: false
 
 permissions:
   contents: read
@@ -66,17 +60,11 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
+    # This environment drives the Pages URL; allow all branches in repo settings
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
-      - name: Download Allure Report artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-report
-          path: allure-report
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
