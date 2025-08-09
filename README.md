@@ -40,7 +40,7 @@ To generate and view an Allure report locally:
 
 A GitHub workflow (e.g., `.github/workflows/playwright-tests.yml`) is configured to:
 
-- Run tests on each push or pull request  
+- Run tests automatically on each pull request  
 - Collect Allure results and serve or publish them (e.g., to GitHub Pages or as artifacts)  
 
 ## Project Structure
