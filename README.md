@@ -47,15 +47,7 @@ A GitHub workflow (e.g., `.github/workflows/playwright-tests.yml`) is configured
 
 Typical layout:
 
-src/
-main/
-java/ — Page Objects, utilities
-test/
-java/ — Test classes
-resources/ — testng.xml, allure.properties, etc.
-pom.xml
-README.md
-
+```text
 .
 ├── .github/workflows/playwright-tests.yml
 ├── pom.xml
@@ -66,6 +58,7 @@ README.md
 └── test/
     ├── java/            # Test classes
     └── resources/       # testng.xml, allure.properties, etc.
+```
 
 ## Live Test Report
 For the latest test results, visit the [Allure Report](https://vidtv.github.io/swaglabs-ui-tests/).
