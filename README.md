@@ -38,7 +38,7 @@ To generate and view an Allure report locally:
 
 ## CI/CD via GitHub Actions
 
-A GitHub workflow (e.g., `.github/workflows/ci.yml`) is configured to:
+A GitHub workflow (e.g., `.github/workflows/playwright-tests.yml`) is configured to:
 
 - Run tests on each push or pull request  
 - Collect Allure results and serve or publish them (e.g., to GitHub Pages or as artifacts)  
@@ -55,6 +55,17 @@ java/ — Test classes
 resources/ — testng.xml, allure.properties, etc.
 pom.xml
 README.md
+
+.
+├── .github/workflows/playwright-tests.yml
+├── pom.xml
+├── README.md
+└── src/
+├── main/
+│   └── java/            # Page Objects, utilities
+└── test/
+    ├── java/            # Test classes
+    └── resources/       # testng.xml, allure.properties, etc.
 
 ## Live Test Report
 For the latest test results, visit the [Allure Report](https://vidtv.github.io/swaglabs-ui-tests/).
