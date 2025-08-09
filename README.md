@@ -1,4 +1,5 @@
-This repository houses an end-to-end test automation framework built with **Java**, **Playwright**, **Maven**, **TestNG**, 
+This repository houses an end-to-end test automation framework built with **Java**, **Playwright**, **Maven**, **TestNG
+**,
 **Allure Reporting**, and **GitHub Actions CI/CD**.
 
 ## Overview
@@ -17,19 +18,23 @@ This framework enables UI automated tests with the following features:
    ```bash
    git clone https://github.com/vidtv/swaglabs-ui-tests.git
    cd swaglabs-ui-tests
+    ```
 
 2. Install dependencies via Maven:
 
    ```bash
    mvn clean install
-   
+    ```
+
 3. Ensure Playwright dependencies are installed (e.g., npx playwright install or Maven plugin).
 
 ## Allure Reports
 
 To generate and view an Allure report locally:
+
    ```bash
    mvn allure:serve
+   ```
 
 ## CI/CD via GitHub Actions
 
