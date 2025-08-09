@@ -50,3 +50,6 @@ java/ — Test classes
 resources/ — testng.xml, allure.properties, etc.
 pom.xml
 README.md
+
+## Live Test Report
+For the latest test results, visit the [Allure Report](https://vidtv.github.io/swaglabs-ui-tests/).
