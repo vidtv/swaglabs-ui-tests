@@ -1,5 +1,4 @@
-This repository houses an end-to-end test automation framework built with **Java**, **Playwright**, **Maven**, **TestNG
-**,
+This repository houses an end-to-end test automation framework built with **Java**, **Playwright**, **Maven**, **TestNG**,
 **Allure Reporting**, and **GitHub Actions CI/CD**.
 
 ## Overview
